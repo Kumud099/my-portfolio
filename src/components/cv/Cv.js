@@ -7,13 +7,13 @@ function Cv() {
   const [educationData, setEducationData] = useState(true);
   const [skillsData, setskillsData] = useState(false);
 
-  // Function to handle the download of CV
   const downloadCv = () => {
-    const link = document.createElement("a");
-    link.href = "/cv.pdf"; // This links to the file in the public folder
-    link.download = "My_CV.pdf"; // The name the file will have when downloaded
-    link.click();
-  };
+  const link = document.createElement("a");
+  link.href = process.env.PUBLIC_URL + "/cv.pdf"; // This ensures it works after deployment
+  link.download = "My_CV.pdf"; // The name the file will have when downloaded
+  link.click();
+};
+
 
   return (
     <section
