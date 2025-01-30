@@ -20,7 +20,6 @@ const LeftBanner = () => {
         <h4 className="text-xl sm:text-2xl font-bold">My name is</h4>
         <h1 className="text-3xl sm:text-4xl font-bold">KUMUD SHRESTHA,</h1>
         <h4 className="text-xl sm:text-2xl font-normal">
-          {" "}
           a Computer Engineer who is
         </h4>
         <h4 className="text-xl sm:text-2xl font-normal">
@@ -32,6 +31,7 @@ const LeftBanner = () => {
         </h4>
       </div>
 
+      {/* Skills Section: Not fixed, keeps original layout */}
       <div className="flex flex-col gap-4 sm:gap-6">
         <h2 className="text-sm sm:text-base uppercase font-titleFont mb-4 text-gray-400">
           Skills on
