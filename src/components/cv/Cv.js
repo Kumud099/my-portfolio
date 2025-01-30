@@ -5,7 +5,7 @@ import Education from "./Education";
 
 function Cv() {
   const [educationData, setEducationData] = useState(true);
-  const [skillsData, setskillsData] = useState(false);
+  const [skillsData, setSkillsData] = useState(false);
 
   // Function to handle the download of CV
   const downloadCv = () => {
@@ -33,25 +33,25 @@ function Cv() {
         </button>
       </div>
 
-      <div className="w-full flex gap-20 mt-12">
-        <ul className="w-full grid grid-cols-2">
+      <div className="w-full flex justify-center mt-12">
+        <ul className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
           <li
-            onClick={() => setEducationData(true) & setskillsData(false)}
+            onClick={() => setEducationData(true) & setSkillsData(false)}
             className={`${
               educationData
                 ? "border-designColor rounded-lg"
                 : "border-transparent"
-            } cvLi`}
+            } cvLi py-2 px-4 text-center cursor-pointer`}
           >
             Education
           </li>
           <li
-            onClick={() => setEducationData(false) & setskillsData(true)}
+            onClick={() => setEducationData(false) & setSkillsData(true)}
             className={`${
               skillsData
                 ? "border-designColor rounded-lg"
                 : "border-transparent"
-            } cvLi`}
+            } cvLi py-2 px-4 text-center cursor-pointer`}
           >
             Skills
           </li>

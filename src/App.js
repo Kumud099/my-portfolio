@@ -5,17 +5,23 @@ import Projects from "./components/projects/Project";
 import Cv from "./components/cv/Cv";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
+
 function App() {
   return (
     <div className="w-full h-auto bg-bodyColor text-lightText">
-      <div className="max-w-screen-2xl mx-auto px-16">
+      <div className="w-full h-auto mx-auto px-4 sm:px-8 lg:px-16 max-w-screen-xl">
         <Navbar />
+
         <Banner />
+
         <About />
 
         <Projects />
+
         <Cv />
+
         <Contact />
+
         <Footer />
       </div>
     </div>

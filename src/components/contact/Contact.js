@@ -13,7 +13,8 @@ const Contact = () => {
         <Title title="CONTACT" des="Contact With Me" />
       </div>
       <div className="w-full">
-        <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
+        <div className="w-full h-auto flex flex-col sm:flex-row justify-between gap-10 sm:gap-16">
+          {/* ContactLeft and ContactRight are stacked on small screens, side-by-side on larger screens */}
           <ContactLeft />
           <ContactRight />
         </div>

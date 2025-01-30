@@ -9,7 +9,6 @@ const Banner = () => {
       id="home"
       className="relative w-screen h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image - Covers Entire Screen */}
       <div className="absolute inset-0 w-full h-full">
         <img
           src={profileImg}
@@ -19,7 +18,7 @@ const Banner = () => {
       </div>
 
       {/* Content Stays on Top */}
-      <div className="relative flex w-full h-full max-w-screen-2xl mx-auto px-16">
+      <div className="relative flex flex-col sm:flex-row w-full h-full max-w-screen-2xl mx-auto px-6 sm:px-16">
         <LeftBanner />
         <RightBanner />
       </div>

@@ -9,42 +9,20 @@ const Footer = () => {
           Quick Link
         </h3>
         <ul className="flex flex-col gap-4 font-titleFont font-medium py-6 overflow-hidden">
-          <li>
-            <span className="w-full text-lg relative hover:text-designColor duration-300 group cursor-pointer">
-              Home
-              <span className="w-full h-[1px] bg-designColor inline-flex absolute left-0 -bottom-1 -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-300"></span>
-            </span>
-          </li>
-          <li>
-            <span className="w-full text-lg relative hover:text-designColor duration-300 group cursor-pointer">
-              About
-              <span className="w-full h-[1px] bg-designColor inline-flex absolute left-0 -bottom-1 -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-300"></span>
-            </span>
-          </li>
-          <li>
-            <span className="w-full text-lg relative hover:text-designColor duration-300 group cursor-pointer">
-              Projects
-              <span className="w-full h-[1px] bg-designColor inline-flex absolute left-0 -bottom-1 -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-300"></span>
-            </span>
-          </li>
-          <li>
-            <span className="w-full text-lg relative hover:text-designColor duration-300 group cursor-pointer">
-              Cv
-              <span className="w-full h-[1px] bg-designColor inline-flex absolute left-0 -bottom-1 -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-300"></span>
-            </span>
-          </li>
-          <li>
-            <span className="w-full text-lg relative hover:text-designColor duration-300 group cursor-pointer">
-              Contact
-              <span className="w-full h-[1px] bg-designColor inline-flex absolute left-0 -bottom-1 -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-300"></span>
-            </span>
-          </li>
+          {["Home", "About", "Projects", "Cv", "Contact"].map((item, index) => (
+            <li key={index}>
+              <span className="w-full text-lg relative hover:text-designColor duration-300 group cursor-pointer">
+                {item}
+                <span className="w-full h-[1px] bg-designColor inline-flex absolute left-0 -bottom-1 -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-300"></span>
+              </span>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div className="w-full h-full flex flex-col gap-8">
-        <h2 className="text-base uppercase font-titleFont mb-4 text-designColor">
-          Find me in
+        <h2 className="text-xl uppercase font-titleFont mb-4 text-designColor">
+          Find me on
         </h2>
         <div className="flex gap-4">
           <a
@@ -52,6 +30,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="bannerIcon"
+            aria-label="Facebook"
           >
             <FaFacebookF />
           </a>
@@ -60,6 +39,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="bannerIcon"
+            aria-label="Instagram"
           >
             <FaInstagram />
           </a>
@@ -68,6 +48,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="bannerIcon"
+            aria-label="LinkedIn"
           >
             <FaLinkedinIn />
           </a>

@@ -16,6 +16,7 @@
 .contactInput {
   @apply w-full h-12 rounded-lg border-b-[1px] border-b-gray-600 bg-[#191b1e] text-lightText px-4 active:outline-none focus-visible:outline-designColor outline-none focus-visible:border-b-transparent duration-300;
 }
+
 .contactTextArea {
   @apply w-full rounded-lg border-b-[1px] border-b-gray-600 bg-[#191b1e] text-lightText px-4 py-2 active:outline-none focus-visible:outline-designColor outline-none focus-visible:border-b-transparent duration-300 resize-none;
 }
@@ -23,6 +24,53 @@
 .bgOpacity {
   @apply bg-black bg-opacity-40;
 }
+
 .active {
   color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .bannerIcon {
+    @apply w-12 h-12 text-lg;
+  }
+  .cvLi {
+    @apply h-16;
+  }
+  .contactInput {
+    @apply h-10 text-sm;
+  }
+  .contactTextArea {
+    @apply py-1 text-sm;
+  }
+}
+
+@media (max-width: 768px) {
+  .bannerIcon {
+    @apply w-10 h-10 text-base;
+  }
+  .cvLi {
+    @apply h-14;
+  }
+  .contactInput {
+    @apply h-10 text-sm px-3;
+  }
+  .contactTextArea {
+    @apply py-1 text-sm px-3;
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerIcon {
+    @apply w-8 h-8 text-base;
+  }
+  .cvLi {
+    @apply h-12;
+  }
+  .contactInput {
+    @apply h-8 text-xs px-2;
+  }
+  .contactTextArea {
+    @apply py-1 text-xs px-2;
+  }
 }
