@@ -10,7 +10,7 @@ function Cv() {
   // Function to handle the download of CV
   const downloadCv = () => {
     const link = document.createElement("a");
-    link.href = "/cv.pdf"; // This links to the file in the public folder
+    link.href = process.env.PUBLIC_URL + "/cv.pdf"; // This ensures it works after deployment
     link.download = "My_CV.pdf"; // The name the file will have when downloaded
     link.click();
   };
@@ -24,7 +24,6 @@ function Cv() {
         <Title title="My CV" titleUp="Curriculum Vitae" />
       </div>
 
-      {/* Download CV Button Below Header */}
       <div className="flex justify-center mt-8">
         <button
           onClick={downloadCv}
