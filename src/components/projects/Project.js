@@ -7,14 +7,12 @@ function Project() {
   return (
     <section
       id="projects"
-      className="w-full h-auto lg:h-screen flex flex-col items-center justify-center pb-20 border-b-[1px] border-b-black"
+      className="w-full h-screen flex flex-col items-center justify-center pb-20 border-b-[1px] border-b-black"
     >
-      <div className="flex justify-center items-center text-center mb-10">
+      <div className="flex justify-center items-center text-center">
         <Title title="Projects" titleUp="Visit my portfolio" />
       </div>
-
-      {/* Responsive grid layout */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14 px-4 sm:px-8">
+      <div className="grid grid-cols-3 gap-14">
         <ProjectCard
           title="ELECTRICITY CONSUMPTION ANALYSIS AND PREDICTION"
           des="The Electricity Consumption Analysis and Prediction System forecasts demand using KNN, linear regression, and XGBoost on Baneshwor data. The XGBoost model achieved an R2-score of 0.95. The frontend is built with Streamlit, and the backend uses Python libraries like NumPy and scikit-learn."
