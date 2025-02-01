@@ -21,13 +21,17 @@ function Cv() {
       className="w-full min-h-[100vh] flex-col pb-20 border-b-[1px] border-b-black"
     >
       <div className="flex justify-center items-center text-center pt-20">
-        <Title title="My CV" titleUp="Curriculum Vitae" />
+        <Title
+          title="My CV"
+          titleUp="Curriculum Vitae"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl" // Adjusted title size
+        />
       </div>
 
       <div className="flex justify-center mt-8">
         <button
           onClick={downloadCv}
-          className="px-6 py-3 bg-designColor text-white rounded-lg hover:bg-pink-600 transition duration-300"
+          className="px-6 py-3 bg-designColor text-white rounded-lg hover:bg-pink-600 transition duration-300 text-sm sm:text-base md:text-lg"
         >
           Download CV
         </button>
@@ -41,7 +45,7 @@ function Cv() {
               educationData
                 ? "border-designColor rounded-lg"
                 : "border-transparent"
-            } cvLi py-2 px-4 text-center cursor-pointer`}
+            } cvLi py-2 px-4 text-center cursor-pointer text-sm sm:text-base md:text-lg`}
           >
             Education
           </li>
@@ -51,7 +55,7 @@ function Cv() {
               skillsData
                 ? "border-designColor rounded-lg"
                 : "border-transparent"
-            } cvLi py-2 px-4 text-center cursor-pointer`}
+            } cvLi py-2 px-4 text-center cursor-pointer text-sm sm:text-base md:text-lg`}
           >
             Skills
           </li>
