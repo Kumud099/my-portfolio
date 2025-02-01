@@ -15,19 +15,24 @@ function About() {
   return (
     <section
       id="about"
-      className="w-full h-screen flex items-center justify-center border-b-[1px] border-b-black pb-20"
+      className="w-full h-auto sm:h-screen flex items-center justify-center border-b-[1px] border-b-black pb-10 sm:pb-20"
     >
-      <div className="flex flex-col md:flex-row items-center">
-        <div className="w-1/3">
+      <div className="flex flex-col items-center w-full max-w-screen-xl mx-auto">
+        {/* Title Section */}
+        <Title title="About Me" mark={mark} />
+
+        {/* Image Section */}
+        <div className="flex flex-col w-full sm:w-1/3 mt-6">
           <img
-            className="border-4 border-borderColor rounded-lg my-4"
+            className="border-4 border-borderColor rounded-lg w-full sm:w-auto"
             src={aboutImg}
             alt="About"
           />
         </div>
-        <div className="w-2/3 mt-4 md:mt-0 md:pl-20">
-          <Title title="About Me" mark={mark} />
-          <p className="font-bodyFont text-xl text-lightText text-justify">
+
+        {/* Text Section */}
+        <div className="w-full sm:w-2/3 mt-4 sm:mt-6 px-4 sm:px-0">
+          <p className="font-bodyFont text-sm sm:text-base md:text-lg lg:text-xl text-lightText text-justify sm:text-center">
             As a computer engineering student, I completed my higher education
             from Uniglobe School and earned my bachelor's degree from Kathmandu
             Engineering College. Programming is my passion. Each line of code
