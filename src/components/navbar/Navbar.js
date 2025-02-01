@@ -10,10 +10,15 @@ export default function Navbar() {
   // Close menu when clicking outside
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (!event.target.closest(".menu-container") && isMenuOpen) {
+      if (
+        isMenuOpen &&
+        !event.target.closest("button") && // Ensures button is not clicked
+        !event.target.closest(".mobile-menu")
+      ) {
         setIsMenuOpen(false);
       }
     };
+
     document.addEventListener("click", handleOutsideClick);
     return () => {
       document.removeEventListener("click", handleOutsideClick);
@@ -53,24 +58,23 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Toggle */}
-      <div className="sm:hidden flex items-center menu-container">
+      <div className="sm:hidden flex items-center z-50">
         <button
           className="text-white text-2xl"
-          onClick={() => {
-            setIsMenuOpen(!isMenuOpen);
-          }}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu (No Sliding, Just Block Toggle) */}
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-bodyColor flex flex-col items-center justify-center gap-6 sm:hidden transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`${
+          isMenuOpen ? "block" : "hidden"
+        } fixed top-0 left-0 w-full h-screen bg-bodyColor sm:hidden z-40`}
+        style={{ zIndex: 50 }}
       >
-        <ul className="flex flex-col items-center gap-6">
+        <ul className="flex flex-col items-center gap-6 pt-20">
           {navLinksdata.map(({ _id, title, link }) => (
             <li
               key={_id}

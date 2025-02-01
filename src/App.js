@@ -9,19 +9,39 @@ import Footer from "./components/footer/Footer";
 function App() {
   return (
     <div className="w-full h-auto bg-bodyColor text-lightText">
+      {/* Full-width container with proper spacing and alignment */}
       <div className="w-full h-auto mx-auto px-4 sm:px-8 lg:px-16 max-w-screen-xl">
+        {/* Navbar */}
         <Navbar />
 
-        <Banner />
+        {/* Banner */}
+        <div className="mt-16 sm:mt-20">
+          {" "}
+          {/* Added top margin for spacing */}
+          <Banner />
+        </div>
 
-        <About />
+        {/* About Section */}
+        <div className="mt-16 sm:mt-20">
+          <About />
+        </div>
 
-        <Projects />
+        {/* Projects Section */}
+        <div className="mt-16 sm:mt-20">
+          <Projects />
+        </div>
 
-        <Cv />
+        {/* CV Section */}
+        <div className="mt-16 sm:mt-20">
+          <Cv />
+        </div>
 
-        <Contact />
+        {/* Contact Section */}
+        <div className="mt-16 sm:mt-20">
+          <Contact />
+        </div>
 
+        {/* Footer */}
         <Footer />
       </div>
     </div>
