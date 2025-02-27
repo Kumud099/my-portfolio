@@ -13,7 +13,7 @@ const Banner = () => {
         <img
           src={profileImg}
           alt="Background"
-          className="w-full h-full object-cover filter grayscale opacity-40"
+          className="w-full h-full object-cover filter grayscale opacity-40 mxr-10"
         />
       </div>
 

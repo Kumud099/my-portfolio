@@ -10,6 +10,7 @@
     "emailjs-com": "^3.2.0",
     "framer-motion": "^11.2.6",
     "hamburger-react": "^2.5.2",
+    "lucide-react": "^0.476.0",
     "react": "^18.3.1",
     "react-burger-menu": "^3.1.0",
     "react-dom": "^18.3.1",

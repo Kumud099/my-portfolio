@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../layout/Title";
 import ProjectCard from "./ProjectCard";
-import { electricity, pig_game, textutils } from "../../assets/index";
+import { electricity, pig_game, weatherapp } from "../../assets/index";
 
 function Project() {
   return (
@@ -30,11 +30,11 @@ function Project() {
           link="https://kumud099.github.io/pig-game/"
         />
         <ProjectCard
-          title="TEXTUTILS"
-          des="TextUtils, built with React and TailwindCSS, converts text to uppercase, lowercase, and title case. It also provides word and character counts, with a user-friendly interface for real-time text manipulation."
-          src={textutils}
-          github="https://github.com/kumud099/textutils-react"
-          link="https://kumud099.github.io/textutils-react/"
+          title="WEATHERAPP"
+          des="A sleek and responsive weather app built with TypeScript and Next.js. It provides real-time weather updates, forecasts, and essential climate details with a user-friendly interface."
+          src={weatherapp}
+          github="https://github.com/Kumud099/weather-app"
+          link="https://weather-app1-murex.vercel.app/"
         />
       </div>
     </section>
