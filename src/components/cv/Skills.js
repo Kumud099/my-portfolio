@@ -96,7 +96,7 @@ function Skills() {
           </div>
           <div className="overflow-x-hidden">
             <p className="text-xs sm:text-sm uppercase font-medium">React</p>
-            <span className="w-[70%] h-2 bgOpacity inline-flex rounded-md mt-2">
+            <span className="w-[90%] h-2 bgOpacity inline-flex rounded-md mt-2">
               <motion.span
                 initial={{ x: "-100%", opacity: 0 }}
                 animate={{
@@ -107,7 +107,25 @@ function Skills() {
                 className="h-full w-full bg-gradient-to-r from-blue-600 via-pink-400 to-pink-800 rounded-sm relative"
               >
                 <span className="absolute -top-7 right-0 text-xs sm:text-sm">
-                  70%
+                  90%
+                </span>
+              </motion.span>
+            </span>
+          </div>
+          <div className="overflow-x-hidden">
+            <p className="text-xs sm:text-sm uppercase font-medium">Nextjs</p>
+            <span className="w-[80%] h-2 bgOpacity inline-flex rounded-md mt-2">
+              <motion.span
+                initial={{ x: "-100%", opacity: 0 }}
+                animate={{
+                  x: "0",
+                  opacity: 1,
+                  transition: { duration: 0.5, delay: 0.5 },
+                }}
+                className="h-full w-full bg-gradient-to-r from-blue-600 via-pink-400 to-pink-800 rounded-sm relative"
+              >
+                <span className="absolute -top-7 right-0 text-xs sm:text-sm">
+                  80%
                 </span>
               </motion.span>
             </span>
@@ -147,7 +165,7 @@ function Skills() {
             </div>
             <div className="overflow-x-hidden">
               <p className="text-xs sm:text-sm uppercase font-medium">Python</p>
-              <span className="w-[40%] h-2 bgOpacity inline-flex rounded-md mt-2">
+              <span className="w-[70%] h-2 bgOpacity inline-flex rounded-md mt-2">
                 <motion.span
                   initial={{ x: "-100%", opacity: 0 }}
                   animate={{
@@ -158,7 +176,7 @@ function Skills() {
                   className="h-full w-full bg-gradient-to-r from-blue-600 via-pink-400 to-pink-800 rounded-sm relative"
                 >
                   <span className="absolute -top-7 right-0 text-xs sm:text-sm">
-                    40%
+                    70%
                   </span>
                 </motion.span>
               </span>

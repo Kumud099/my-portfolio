@@ -31,7 +31,7 @@ function Cv() {
       <div className="flex justify-center mt-8">
         <button
           onClick={downloadCv}
-          className="px-6 py-3 bg-designColor text-white rounded-lg hover:bg-pink-600 transition duration-300 text-sm sm:text-base md:text-lg"
+          className="px-6 py-3 bg-designColor text-white rounded-lg hover:bg-#6674ba transition duration-300 text-sm sm:text-base md:text-lg"
         >
           Download CV
         </button>

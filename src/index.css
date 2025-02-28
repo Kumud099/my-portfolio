@@ -74,3 +74,31 @@
     @apply py-1 text-xs px-2;
   }
 }
+
+.clip-hexagon {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hexagon border */
+.hexagon-border {
+  position: absolute;
+  width: 110%; /* Slightly larger for border effect */
+  height: 110%;
+  top: -5%;
+  left: -5%;
+  clip-path: inherit;
+  background-color: red; /* Border color */
+  z-index: -1;
+}
+
+/* Image inside hexagon */
+.hexagon-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

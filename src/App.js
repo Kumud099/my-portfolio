@@ -8,7 +8,7 @@ import Footer from "./components/footer/Footer";
 
 function App() {
   return (
-    <div className="w-full h-auto bg-bodyColor text-lightText overflow-x-hidden">
+    <div className="w-full h-auto bg-gradient-to-r from-[#272738] via-[#485f83] to-[#4191a9] text-lightText overflow-x-hidden">
       {/* Full-width container with proper spacing and alignment */}
       <div className="w-full h-auto mx-auto px-4 sm:px-6 lg:px-16 max-w-screen-xl">
         {/* Navbar */}

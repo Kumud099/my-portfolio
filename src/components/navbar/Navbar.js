@@ -13,7 +13,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="w-full h-[80px] sticky top-0 z-50 bg-bodyColor mx-auto flex justify-between items-center border-b-[1px] border-b-gray-500 px-4 sm:px-8 flex-wrap">
+    <div className="w-full h-[80px] sticky top-0 z-50 bg-bg-gradient-to-r from-blue-200 to-cyan-200 mx-auto flex justify-between items-center  border-b-gray-500 px-4 sm:px-8 flex-wrap">
       {/* Logo */}
       <div className="flex items-center space-x-2">
         <img className="h-12 w-12 rounded-full" src={logok} alt="logok" />

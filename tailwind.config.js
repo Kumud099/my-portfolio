@@ -20,14 +20,14 @@ module.exports = {
         aboutmeFont: ["SFMono-Regular"],
       },
       colors: {
-        bodyColor: "#28282B",
+        bodyColor: "gradient-to-r from-blue-200 to-cyan-200",
         lightText: "#fff5fd",
         boxBg: "linear-gradient(145deg, #1e2024, #23272b)",
-        designColor: "#8a3f7b",
-        borderColor: "#c791bc",
+        designColor: "#3c9dde",
+        borderColor: "#257fba",
       },
       boxShadow: {
-        shadowOne: "10px 10px 19px #1c1e22, -10px -10px 19px #262a2e",
+        shadowOne: "10px 10px 19px rgb(34, 37, 42), -10px -10px 19pxrgb(89, 127, 165)",
       },
     },
   },

@@ -1,8 +1,9 @@
 import React from "react";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { TbBrandJavascript } from "react-icons/tb";
 import { FaReact } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const LeftBanner = () => {
   const [text] = useTypewriter({
@@ -33,7 +34,7 @@ const LeftBanner = () => {
           <span className={"font-bold text-designColor uppercase "}>
             {text}
           </span>
-          <Cursor cursorBlinking="false" curseStyle="|" cursorColor="#8a3f7b" />
+          
         </h4>
       </div>
 
@@ -55,6 +56,37 @@ const LeftBanner = () => {
           </span>
         </div>
       </div>
+<div className="flex flex-col gap-4 sm:gap-6 mt-2">
+  <h2 className="text-xs sm:text-sm md:text-base lg:text-lg uppercase font-titleFont mb-4 text-gray-400">
+    FIND ME ON
+  </h2>
+  <div className="flex gap-4 sm:gap-6">
+    <a
+      href="https://www.facebook.com/kumud.stha.7/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bannerIcon text-xs sm:text-sm md:text-base lg:text-xl"
+    >
+      <FaFacebookF />
+    </a>
+    <a
+      href="https://www.instagram.com/kumud_shrestha/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bannerIcon text-xs sm:text-sm md:text-base lg:text-xl"
+    >
+      <FaInstagram />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/kumud-shrestha-236333280/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bannerIcon text-xs sm:text-sm md:text-base lg:text-xl"
+    >
+      <FaLinkedinIn />
+    </a>
+  </div>
+</div>
     </div>
   );
 };
