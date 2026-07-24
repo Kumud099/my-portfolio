@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "emailjs-com": "^3.2.0",
     "framer-motion": "^11.2.6",
     "hamburger-react": "^2.5.2",
     "lucide-react": "^0.476.0",
@@ -18,6 +18,7 @@
     "react-scroll": "^1.9.0",
     "react-simple-typewriter": "^5.0.1",
     "swiper": "^11.2.1",
+    "three": "^0.160.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

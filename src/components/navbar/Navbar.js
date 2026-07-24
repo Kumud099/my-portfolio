@@ -4,56 +4,127 @@ import { logok } from "../../assets/index";
 import { navLinksdata } from "../../constants/index";
 import { X, Menu } from "lucide-react";
 
+const ACCENT = "#ADC6FF";
+const MUTED = "#94a3b8";
+const BORDER = "rgba(148, 163, 184, 0.14)";
+
 export default function Navbar() {
-  // State to handle mobile menu toggle
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleNavbar = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleNavbar = () => setIsOpen((open) => !open);
+  const closeNavbar = () => setIsOpen(false);
 
   return (
-    <div className="w-full h-[80px] sticky top-0 z-50 bg-bg-gradient-to-r from-blue-200 to-cyan-200 mx-auto flex justify-between items-center  border-b-gray-500 px-4 sm:px-8 flex-wrap">
-      {/* Logo */}
-      <div className="flex items-center space-x-2">
-        <img className="h-12 w-12 rounded-full" src={logok} alt="logok" />
-        <span className="text-xl san-serif text-white whitespace-nowrap sm:block hidden">
-          MyPortfolio
-        </span>
+    <header
+      className="w-full h-[80px] relative bg-transparent"
+      style={{
+        paddingLeft: "var(--nav-inline-start, 1rem)",
+        paddingRight: "var(--nav-inline-end, 1rem)",
+      }}
+    >
+      <div className="h-full mx-auto flex items-center justify-between gap-4">
+        <Link
+          to="home"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+          className="flex items-center gap-2.5 cursor-pointer shrink-0"
+          onClick={closeNavbar}
+        >
+          <img
+            className="h-10 w-10 sm:h-11 sm:w-11 rounded-full border"
+            style={{ borderColor: BORDER }}
+            src={logok}
+            alt="Kumud Shrestha"
+          />
+          <span className="hidden sm:inline font-titleFont text-lg font-bold tracking-tight text-white whitespace-nowrap">
+            KS.Portfolio
+          </span>
+        </Link>
+
+        <nav className="hidden md:block" aria-label="Primary">
+          <ul className="flex items-center gap-1 lg:gap-2">
+            {navLinksdata.map(({ _id, title, link }) => (
+              <li key={_id}>
+                <Link
+                  to={link}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  activeClass="nav-link-active"
+                  className="nav-link relative inline-flex px-2.5 lg:px-3 py-2 font-mono text-[11px] lg:text-xs uppercase tracking-[0.14em] cursor-pointer transition-colors duration-300"
+                  style={{ color: MUTED }}
+                >
+                  {title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <button
+          type="button"
+          className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-sm border transition-colors"
+          style={{ borderColor: BORDER, color: ACCENT }}
+          onClick={toggleNavbar}
+          aria-expanded={isOpen}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+        >
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
 
-      {/* Navigation Links */}
-      <section>
-        {/* Hide on small screens, show on medium (768px) and larger */}
-        <ul className="hidden md:flex items-center gap-20">
-          {navLinksdata.map(({ _id, title, link }) => (
-            <li key={_id} className="text-base font-normal text-gray-400 tracking-wider cursor-pointer hover:text-designColor duration-300">
-              <Link to={link} spy={true} smooth={true} offset={-70} duration={500}>
-                {title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button onClick={toggleNavbar}>{isOpen ? <X /> : <Menu />}</button>
+      {isOpen && (
+        <div
+          className="absolute top-full left-0 w-full md:hidden z-50 bg-transparent"
+        >
+          <ul className="flex flex-col px-4 py-4 gap-1">
+            {navLinksdata.map(({ _id, title, link }) => (
+              <li key={_id}>
+                <Link
+                  to={link}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  activeClass="nav-link-active"
+                  onClick={closeNavbar}
+                  className="nav-link block w-full px-3 py-3 font-mono text-xs uppercase tracking-[0.14em] cursor-pointer transition-colors duration-300"
+                  style={{ color: MUTED }}
+                >
+                  {title}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-{isOpen && (
-  <div className="absolute top-20 left-0 w-full bg-bodyColor p-4 md:hidden">
-    <ul className="flex flex-col items-center gap-4">
-      {navLinksdata.map(({ _id, title, link }) => (
-        <li key={_id} className="text-base text-gray-400 cursor-pointer hover:text-designColor transition duration-300">
-          <Link to={link} spy={true} smooth={true} offset={-70} duration={500} onClick={toggleNavbar}>
-            {title}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
+      )}
 
-      </section>
-    </div>
+      <style>{`
+        .nav-link:hover {
+          color: ${ACCENT} !important;
+        }
+        .nav-link-active {
+          color: ${ACCENT} !important;
+        }
+        .nav-link-active::after {
+          content: "";
+          position: absolute;
+          left: 0.65rem;
+          right: 0.65rem;
+          bottom: 0.35rem;
+          height: 1px;
+          background: ${ACCENT};
+          opacity: 0.7;
+        }
+        @media (max-width: 767px) {
+          .nav-link-active::after {
+            display: none;
+          }
+        }
+      `}</style>
+    </header>
   );
 }

@@ -2,51 +2,65 @@ import React from "react";
 import { FaGithubAlt } from "react-icons/fa";
 import { CiGlobe } from "react-icons/ci";
 
-function ProjectCard(props) {
+function ProjectCard({
+  index,
+  title,
+  category,
+  tools,
+  src,
+  github,
+  link,
+}) {
+  const number = String(index + 1).padStart(2, "0");
+
   return (
-    <div className="w-full p-4 xl:px-12 h-auto xl:py-10 rounded-lg shadow-shadowOne flex flex-col bg-gradient-to-r from-bodyColor to-[#202327] group hover:bg-gradient-to-b hover:from-gray-900 hover:gray-900 transition-colors duration-1000">
-      <div className="w-full h-auto overflow-hidden rounded-lg">
-        <img
-          className="w-full h-auto max-w-[300px] sm:max-w-[400px] md:max-w-[500px] object-cover rounded-lg transform group-hover:scale-110 duration-300 cursor-pointer"
-          src={props.src}
-          alt="project_image"
-        />
-      </div>
-      <div className="w-full mt-5 flex flex-col gap-6">
-        <div className="flex flex-col lg:flex-row items-center justify-between">
-          <h3 className="text-base uppercase text-designColor font-normal lg:flex-grow">
-            {props.title}
-          </h3>
-          <div className="flex gap-2 items-center">
-            {/* GitHub Link */}
-            {props.github && (
+    <article className="work-box">
+      <div className="work-info">
+        <div className="work-title">
+          <h3>{number}</h3>
+          <div>
+            <h4>{title}</h4>
+            <p>{category}</p>
+          </div>
+        </div>
+        <h4>Tools and features</h4>
+        <p>{tools}</p>
+        {(github || link) && (
+          <div className="work-actions">
+            {github && (
               <a
-                href={props.github}
+                href={github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-400 hover:text-designColor duration-200 hover:cursor-pointer"
+                aria-label={`${title} on GitHub`}
               >
                 <FaGithubAlt />
               </a>
             )}
-            {/* Live Project Link */}
-            {props.link && (
+            {link && (
               <a
-                href={props.link}
+                href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-400 hover:text-designColor duration-200 hover:cursor-pointer"
+                aria-label={`Open ${title}`}
               >
                 <CiGlobe />
               </a>
             )}
           </div>
-        </div>
-        <p className="text-sm tracking-wide mt-3 hover:text-gray-100 duration-300">
-          {props.des}
-        </p>
+        )}
       </div>
-    </div>
+      <div className="work-image">
+        <a
+          className="work-image-in"
+          href={link || github || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={src} alt={title} />
+        </a>
+      </div>
+    </article>
   );
 }
 

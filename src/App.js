@@ -1,47 +1,31 @@
 import Navbar from "./components/navbar/Navbar";
 import Banner from "./components/banner/Banner";
-import About from "./components/about/About";
+import Career from "./components/career/Career";
+import TechnicalSkills from "./components/skills/TechnicalSkills";
 import Projects from "./components/projects/Project";
-import Cv from "./components/cv/Cv";
+import Contributions from "./components/contributions/Contributions";
+import Blog from "./components/blog/Blog";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 
 function App() {
   return (
-    <div className="w-full h-auto bg-gradient-to-r from-[#272738] via-[#485f83] to-[#4191a9] text-lightText overflow-x-hidden">
-      {/* Full-width container with proper spacing and alignment */}
-      <div className="w-full h-auto mx-auto px-4 sm:px-6 lg:px-16 max-w-screen-xl">
-        {/* Navbar */}
+    <div className="relative w-full h-auto bg-gradient-to-r from-[#272738] via-[#485f83] to-[#4191a9] text-lightText overflow-x-clip">
+      <div className="sticky top-0 z-50 w-full">
         <Navbar />
-
-        {/* Banner */}
-        <div className="mt-8 sm:mt-12 lg:mt-16">
-          <Banner />
-        </div>
-
-        {/* About Section */}
-        <div className="mt-8 sm:mt-12 lg:mt-16">
-          <About />
-        </div>
-
-        {/* Projects Section */}
-        <div className="mt-8 sm:mt-12 lg:mt-16">
-          <Projects />
-        </div>
-
-        {/* CV Section */}
-        <div className="mt-8 sm:mt-12 lg:mt-16">
-          <Cv />
-        </div>
-
-        {/* Contact Section */}
-        <div className="mt-8 sm:mt-12 lg:mt-16">
-          <Contact />
-        </div>
-
-        {/* Footer */}
-        <Footer />
       </div>
+
+      <div className="-mt-[80px]">
+        <Banner />
+      </div>
+
+      <Career />
+      <TechnicalSkills />
+      <Projects />
+      <Contributions />
+      <Blog />
+      <Contact />
+      <Footer />
     </div>
   );
 }
