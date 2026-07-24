@@ -26,7 +26,7 @@ const Footer = () => {
         </h2>
         <div className="flex gap-4">
           <a
-            href="https://www.facebook.com/kumud.stha.7/" // Replace with your actual Facebook URL
+            href="https://www.facebook.com/kumud.stha.7/" 
             target="_blank"
             rel="noopener noreferrer"
             className="bannerIcon"
@@ -35,7 +35,7 @@ const Footer = () => {
             <FaFacebookF />
           </a>
           <a
-            href="https://www.instagram.com/kumud_shrestha/" // Replace with your actual Instagram URL
+            href="https://www.instagram.com/kumud_shrestha/"
             target="_blank"
             rel="noopener noreferrer"
             className="bannerIcon"
@@ -44,7 +44,7 @@ const Footer = () => {
             <FaInstagram />
           </a>
           <a
-            href="https://www.linkedin.com/in/kumud-shrestha-236333280/" // Replace with your actual LinkedIn URL
+            href="https://www.linkedin.com/in/kumud-shrestha-236333280/" 
             target="_blank"
             rel="noopener noreferrer"
             className="bannerIcon"
