@@ -5,6 +5,7 @@ import logok from "./images/logos/logok.jpeg";
 import profileImg from "./images/profileImg.png";
 import aboutImg from "./images/aboutImg.avif";
 import electricity from "./images/projects/Electricity.png";
+import researchPaperCertificate from "./images/projects/research-paper-certificare.pdf";
 
 export {
   contactImg,
@@ -14,4 +15,5 @@ export {
   profileImg,
   aboutImg,
   electricity,
+  researchPaperCertificate,
 };
