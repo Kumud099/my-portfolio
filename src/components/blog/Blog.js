@@ -1,129 +1,94 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { blogPosts } from "../../data/blogPosts";
+import BlogCard from "./BlogCard";
 
 /** Distinct from GitHub contributions (#080C18 / #3fb950) — blue accents */
 const BG = "#05070a";
-const CARD = "#0c1220";
 const BLUE = "#3B82F6";
 const BLUE_SOFT = "#93c5fd";
 const MUTED = "#94a3b8";
+const PAGE_SIZE = 6;
 
-const posts = [
-  {
-    id: 1,
-    date: "24 OCT 2023",
-    readTime: "12 MIN READ",
-    title: "Lorem Ipsum Dolor Sit Amet",
-    excerpt:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    tags: ["Lorem", "Ipsum"],
-    href: "#",
-  },
-  {
-    id: 2,
-    date: "12 SEP 2023",
-    readTime: "8 MIN READ",
-    title: "Consectetur Adipiscing Elit",
-    excerpt:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    tags: ["Dolor", "Sit"],
-    href: "#",
-  },
-  {
-    id: 3,
-    date: "28 AUG 2023",
-    readTime: "15 MIN READ",
-    title: "Sed Do Eiusmod Tempor",
-    excerpt:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    tags: ["Amet", "Elit"],
-    href: "#",
-  },
-];
+function BlogPagination({ page, totalPages, onChange }) {
+  if (totalPages <= 1) return null;
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  show: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-function BlogCard({ post, index }) {
   return (
-    <motion.article
-      custom={index}
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-60px" }}
-      whileHover={{
-        y: -4,
-        borderColor: "rgba(59, 130, 246, 0.4)",
-        boxShadow:
-          "0 0 0 1px rgba(59, 130, 246, 0.14), 0 18px 40px rgba(0,0,0,0.35)",
-      }}
-      transition={{ type: "spring", stiffness: 320, damping: 28 }}
-      className="group relative flex flex-col rounded-xl border border-white/[0.07] p-5 sm:p-6"
-      style={{ backgroundColor: CARD }}
+    <nav
+      className="mt-8 flex flex-wrap items-center justify-center gap-2"
+      aria-label="Blog pagination"
     >
-      <p
-        className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider"
-        style={{ color: MUTED }}
+      <button
+        type="button"
+        onClick={() => onChange(page - 1)}
+        disabled={page <= 1}
+        className="font-mono text-xs uppercase tracking-[0.14em] px-3 py-2 rounded-md border transition-opacity disabled:opacity-35 disabled:cursor-not-allowed hover:opacity-80"
+        style={{
+          color: BLUE,
+          borderColor: "rgba(59, 130, 246, 0.35)",
+          backgroundColor: "rgba(59, 130, 246, 0.06)",
+        }}
+        aria-label="Previous page"
       >
-        {post.date}
-        <span className="mx-2 opacity-50">•</span>
-        {post.readTime}
-      </p>
+        ← Prev
+      </button>
 
-      <h3 className="mt-3 font-titleFont text-lg sm:text-xl font-bold text-white leading-snug tracking-tight">
-        {post.title}
-      </h3>
-
-      <p
-        className="mt-2 text-sm leading-relaxed flex-1 line-clamp-3"
-        style={{ color: MUTED }}
-      >
-        {post.excerpt}
-      </p>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {post.tags.map((tag) => (
-          <span
-            key={tag}
-            className="font-mono text-[10px] sm:text-[11px] rounded-full px-2.5 py-1 border"
+      {pages.map((n) => {
+        const active = n === page;
+        return (
+          <button
+            key={n}
+            type="button"
+            onClick={() => onChange(n)}
+            aria-current={active ? "page" : undefined}
+            className="font-mono text-xs min-w-[2.25rem] h-9 px-2 rounded-md border transition-colors"
             style={{
-              color: BLUE_SOFT,
-              borderColor: "rgba(59, 130, 246, 0.4)",
-              backgroundColor: "rgba(59, 130, 246, 0.08)",
+              color: active ? "#05070a" : BLUE_SOFT,
+              borderColor: active ? BLUE : "rgba(59, 130, 246, 0.3)",
+              backgroundColor: active ? BLUE : "transparent",
             }}
           >
-            {tag}
-          </span>
-        ))}
-      </div>
+            {n}
+          </button>
+        );
+      })}
 
-      <a
-        href={post.href}
-        className="mt-5 inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-wide transition-colors"
-        style={{ color: BLUE }}
-        onClick={post.href === "#" ? (e) => e.preventDefault() : undefined}
-        {...(post.href !== "#"
-          ? { target: "_blank", rel: "noopener noreferrer" }
-          : {})}
+      <button
+        type="button"
+        onClick={() => onChange(page + 1)}
+        disabled={page >= totalPages}
+        className="font-mono text-xs uppercase tracking-[0.14em] px-3 py-2 rounded-md border transition-opacity disabled:opacity-35 disabled:cursor-not-allowed hover:opacity-80"
+        style={{
+          color: BLUE,
+          borderColor: "rgba(59, 130, 246, 0.35)",
+          backgroundColor: "rgba(59, 130, 246, 0.06)",
+        }}
+        aria-label="Next page"
       >
-        Read the log
-        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
-          →
-        </span>
-      </a>
-    </motion.article>
+        Next →
+      </button>
+    </nav>
   );
 }
 
 function Blog() {
   const sectionRef = useRef(null);
+  const [page, setPage] = useState(1);
+  const location = useLocation();
+
+  const totalPages = Math.max(1, Math.ceil(blogPosts.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+
+  const pagePosts = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return blogPosts.slice(start, start + PAGE_SIZE);
+  }, [currentPage]);
+
+  const multiPage = totalPages > 1;
+  const singleScreenLayout = blogPosts.length <= 3 && !multiPage;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -141,11 +106,30 @@ function Blog() {
     [40, 0, 0, -40]
   );
 
+  useEffect(() => {
+    if (location.hash !== "#blog") return;
+    const el = document.getElementById("blog");
+    if (!el) return;
+    const t = window.setTimeout(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+    return () => window.clearTimeout(t);
+  }, [location.hash, location.pathname]);
+
+  const handlePageChange = (next) => {
+    if (next < 1 || next > totalPages) return;
+    setPage(next);
+  };
+
   return (
     <section
       id="blog"
       ref={sectionRef}
-      className="relative w-full min-h-screen h-screen flex items-center overflow-hidden"
+      className={`relative w-full flex items-center ${
+        singleScreenLayout
+          ? "min-h-screen h-screen overflow-hidden"
+          : "min-h-screen h-auto overflow-visible py-16 sm:py-20"
+      }`}
       style={{ backgroundColor: BG, color: "#fff" }}
       aria-labelledby="blog-heading"
     >
@@ -163,6 +147,9 @@ function Blog() {
           #blog {
             height: auto !important;
             min-height: 100vh;
+            overflow: visible !important;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
           }
         }
       `}</style>
@@ -210,34 +197,31 @@ function Blog() {
             className="mt-3 text-sm sm:text-base leading-relaxed max-w-lg"
             style={{ color: MUTED }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Notes on engineering work, research, and building software —
+            starting with our electricity consumption prediction project.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {posts.map((post, index) => (
-            <BlogCard key={post.id} post={post} index={index} />
-          ))}
-        </div>
-
-        <motion.div
-          className="mt-8 flex justify-center"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, delay: 0.2 }}
-        >
-          <a
-            href="https://github.com/Kumud099"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] transition-opacity hover:opacity-80"
-            style={{ color: BLUE }}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPage}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           >
-            View more →
-          </a>
-        </motion.div>
+            {pagePosts.map((post, index) => (
+              <BlogCard key={post.id} post={post} index={index} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        <BlogPagination
+          page={currentPage}
+          totalPages={totalPages}
+          onChange={handlePageChange}
+        />
       </motion.div>
     </section>
   );

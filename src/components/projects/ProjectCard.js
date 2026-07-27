@@ -1,6 +1,7 @@
 import React from "react";
-import { FaGithubAlt } from "react-icons/fa";
+import { FaGithubAlt, FaFilePdf } from "react-icons/fa";
 import { CiGlobe } from "react-icons/ci";
+import { HiOutlineExternalLink } from "react-icons/hi";
 
 function ProjectCard({
   index,
@@ -10,6 +11,9 @@ function ProjectCard({
   src,
   github,
   link,
+  paperNote,
+  doi,
+  certificate,
 }) {
   const number = String(index + 1).padStart(2, "0");
 
@@ -46,6 +50,37 @@ function ProjectCard({
               >
                 <CiGlobe />
               </a>
+            )}
+          </div>
+        )}
+        {(paperNote || doi || certificate) && (
+          <div className="work-paper">
+            {paperNote && <p>{paperNote}</p>}
+            {(doi || certificate) && (
+              <div className="work-paper-links">
+                {doi && (
+                  <a
+                    href={doi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${title} research paper`}
+                  >
+                    <HiOutlineExternalLink aria-hidden="true" />
+                    View paper
+                  </a>
+                )}
+                {certificate && (
+                  <a
+                    href={certificate}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${title} research certificate`}
+                  >
+                    <FaFilePdf aria-hidden="true" />
+                    Certificate
+                  </a>
+                )}
+              </div>
             )}
           </div>
         )}

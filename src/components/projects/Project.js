@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import ProjectCard from "./ProjectCard";
-import { electricity, pig_game, weatherapp } from "../../assets/index";
+import {
+  electricity,
+  pig_game,
+  weatherapp,
+  researchPaperCertificate,
+} from "../../assets/index";
 
 const ACCENT = "#3B82F6";
 const BG = "#080C18";
@@ -14,6 +19,10 @@ const projects = [
     src: electricity,
     github: "https://github.com/kumud099/electricity-consumption-analysis",
     link: "https://kumud099-electricity-consumption-analysis-a-frontendmain-y6t5k8.streamlit.app/",
+    paperNote:
+      "Research paper published in KEC Journal of Science and Engineering (May 2025)",
+    doi: "https://www.nepjol.info/index.php/kjse/article/view/78360",
+    certificate: researchPaperCertificate,
   },
   {
     title: "Pig Game",
@@ -270,6 +279,38 @@ function Project() {
           color: ${ACCENT};
           border-color: ${ACCENT};
           background: rgba(59, 130, 246, 0.12);
+        }
+        .work-paper {
+          margin-top: 1rem;
+          padding-top: 0.85rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .work-paper p {
+          width: 100%;
+          font-size: 0.85rem;
+          line-height: 1.45;
+          color: rgba(255, 255, 255, 0.7);
+          margin: 0;
+        }
+        .work-paper-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.65rem;
+          margin-top: 0.75rem;
+        }
+        .work-paper-links a {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          font-size: 0.8rem;
+          font-weight: 500;
+          color: ${ACCENT};
+          text-decoration: none;
+          transition: opacity 0.2s ease;
+        }
+        .work-paper-links a:hover {
+          opacity: 0.8;
+          text-decoration: underline;
         }
         .work-image {
           display: flex;

@@ -23,7 +23,7 @@ const timeline = [
     title: "Bachelor of Computer Engineering",
     org: "Kathmandu Engineering College",
     description:
-      "Successfully graduated with a Bachelor's degree in Computer Engineering. During my studies, I completed academic projects in Image Steganography and Electricity Consumption Analysis & Prediction, and co-authored a research paper selected for publication.",
+      "Successfully graduated with a Bachelor's degree in Computer Engineering. During my studies, I completed academic projects in Image Steganography and Electricity Consumption Analysis & Prediction, and co-authored a research paper.",
   },
   {
     date: "2024 – Present",
@@ -31,6 +31,13 @@ const timeline = [
     org: "Hinomaru Technology",
     description:
       "Developing and maintaining enterprise ERP solutions using Django, Django REST Framework, React with Inertia.js, PostgreSQL, Redis, and Docker. Focused on designing scalable backend systems, REST APIs, database optimization, and building features for real-world business applications.",
+  },
+  {
+    date: "May 2025",
+    title: "Research Paper Published",
+    org: "KEC Journal of Science and Engineering",
+    description:
+      "Co-authored \"Electricity Consumption Analysis and Prediction,\" published on May 7, 2025 in KEC Journal of Science and Engineering (Vol. 9 No. 1, pp. 78–85). The paper covers ML-based electricity demand forecasting with KNN, linear regression, and XGBoost using Grid Office Baneshwor data.",
   },
   {
     date: "Today",
