@@ -70,6 +70,14 @@ function ContentBlock({ block }) {
     );
   }
 
+  if (block.type === "h3") {
+    return (
+      <h3 className="font-titleFont text-base sm:text-lg font-semibold text-white tracking-tight pt-1">
+        {block.text}
+      </h3>
+    );
+  }
+
   if (block.type === "ul" || block.type === "ol") {
     const ListTag = block.type === "ol" ? "ol" : "ul";
     return (
@@ -85,6 +93,59 @@ function ContentBlock({ block }) {
           </li>
         ))}
       </ListTag>
+    );
+  }
+
+  if (block.type === "code") {
+    return (
+      <pre
+        className="overflow-x-auto rounded-xl border border-white/[0.07] p-4 sm:p-5 font-mono text-[11px] sm:text-xs leading-relaxed"
+        style={{ backgroundColor: CARD, color: BLUE_SOFT }}
+      >
+        <code>{block.text}</code>
+      </pre>
+    );
+  }
+
+  if (block.type === "table") {
+    return (
+      <div className="overflow-x-auto rounded-xl border border-white/[0.07]">
+        <table className="w-full min-w-[280px] text-left text-sm">
+          <thead style={{ backgroundColor: CARD }}>
+            <tr>
+              {block.headers.map((header) => (
+                <th
+                  key={header}
+                  className="px-4 py-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-medium border-b border-white/[0.08]"
+                  style={{ color: BLUE }}
+                >
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {block.rows.map((row) => (
+              <tr
+                key={row.join("-")}
+                className="border-b border-white/[0.05] last:border-0"
+              >
+                {row.map((cell, i) => (
+                  <td
+                    key={`${cell}-${i}`}
+                    className={`px-4 py-2.5 ${
+                      i === 0 ? "font-mono font-medium text-white/90" : ""
+                    }`}
+                    style={{ color: i === 0 ? undefined : MUTED }}
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   }
 
@@ -220,6 +281,12 @@ function BlogDetail({ post: postProp }) {
           {post.date}
           <span className="mx-2 opacity-50">•</span>
           {post.readTime}
+          {post.category && (
+            <>
+              <span className="mx-2 opacity-50">•</span>
+              {post.category}
+            </>
+          )}
         </p>
 
         <h1

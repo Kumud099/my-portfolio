@@ -26,7 +26,7 @@ const categories = [
     accent: "#ADC6FF",
     track: "rgba(255,255,255,0.1)",
     skills: [
-      { name: "React / Inertia.js", level: 85 },
+      { name: "React / Inertia.js", level: 60 },
       { name: "Tailwind CSS", level: 92 },
     ],
   },
@@ -46,8 +46,8 @@ const categories = [
     accent: "#FDBA74",
     track: "rgba(255,255,255,0.1)",
     skills: [
-      { name: "Docker / K8s", level: 75 },
-      { name: "Git / CI/CD", level: 88 },
+      { name: "Docker", level: 75 },
+      { name: "Git", level: 88 },
     ],
   },
 ];
