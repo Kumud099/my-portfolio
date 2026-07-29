@@ -18,7 +18,7 @@ const projects = [
     tools: "Python, NumPy, scikit-learn, XGBoost, Streamlit",
     src: electricity,
     github: "https://github.com/kumud099/electricity-consumption-analysis",
-    link: "https://kumud099-electricity-consumption-analysis-a-frontendmain-y6t5k8.streamlit.app/",
+    link: "https://electricity-consumption-analysis-and-forecast.streamlit.app/",
     paperNote:
       "Research paper published in KEC Journal of Science and Engineering (May 2025)",
     doi: "https://www.nepjol.info/index.php/kjse/article/view/78360",
